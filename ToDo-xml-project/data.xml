@@ -1,0 +1,16 @@
+<tasks>
+    <task id="1">
+        <dim1>
+            <date>2025-05-10</date>
+            <deadline>2025-05-15</deadline>
+        </dim1>
+        <dim2>
+            <subject>Matemaatika</subject>
+            <type>Kodutöö</type>
+        </dim2>
+        <dim3>
+            <info>Kontrolltöö teema 7</info>
+            <comment>Vaja lõpetada enne reedet</comment>
+        </dim3>
+    </task>
+</tasks>
