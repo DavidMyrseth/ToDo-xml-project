@@ -8,6 +8,7 @@
             </head>
             <body>
                 <h2>TODO List (XML + XSLT)</h2>
+
                 <table border="1" cellpadding="6">
                     <tr>
                         <th>ID</th>
@@ -34,6 +35,7 @@
                     </xsl:for-each>
 
                 </table>
+
             </body>
         </html>
     </xsl:template>
