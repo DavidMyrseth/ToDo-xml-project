@@ -1,4 +1,7 @@
-<tasks>
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="schema.xsd">
+
     <task id="1">
         <dim1>
             <date>2025-05-10</date>
@@ -13,4 +16,35 @@
             <comment>Vaja lõpetada enne reedet</comment>
         </dim3>
     </task>
+
+    <task id="2">
+        <dim1>
+            <date>2025-06-01</date>
+            <deadline>2025-06-10</deadline>
+        </dim1>
+        <dim2>
+            <subject>Füüsika</subject>
+            <type>Test</type>
+        </dim2>
+        <dim3>
+            <info>Kordamisküsimused</info>
+            <comment>Oluline eksamiks</comment>
+        </dim3>
+    </task>
+
+    <task id="3">
+        <dim1>
+            <date>2025-05-20</date>
+            <deadline>2025-05-25</deadline>
+        </dim1>
+        <dim2>
+            <subject>Inglise keel</subject>
+            <type>Essee</type>
+        </dim2>
+        <dim3>
+            <info>Esitada PDF kujul</info>
+            <comment>Minimaalne pikkus 600 sõna</comment>
+        </dim3>
+    </task>
+
 </tasks>
