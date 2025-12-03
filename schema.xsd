@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="tasks">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="task" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+
+                            <xs:element name="dim1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="date" type="xs:date"/>
+                                        <xs:element name="deadline" type="xs:date"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="dim2">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="subject" type="xs:string"/>
+                                        <xs:element name="type" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="dim3">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="info" type="xs:string"/>
+                                        <xs:element name="comment" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
