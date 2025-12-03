@@ -2,7 +2,7 @@
 require_once "functions.php";
 $xml = simplexml_load_file("data.xml");
 
-// Kontrollime, millist otsingut kasutaja tegi
+// Kontrollime otsingu tingimusi
 if (!empty($_GET["subject"])) {
     $tasks = findBySubject($_GET["subject"]);
 }
@@ -13,7 +13,6 @@ elseif (!empty($_GET["keyword"])) {
     $tasks = searchKeyword($_GET["keyword"]);
 }
 else {
-    // Kui otsingut ei tehta → näita kõiki ülesandeid
     $tasks = $xml->task;
 }
 ?>
@@ -48,6 +47,11 @@ else {
     <button type="submit">Otsi</button>
 </form>
 
+<!-- Кнопка “Näita kõiki” -->
+<form method="GET">
+    <button type="submit">Näita kõiki</button>
+</form>
+
 <hr>
 
 <table border="1" cellpadding="6">
@@ -61,23 +65,41 @@ else {
         <th>Kommentaar</th>
     </tr>
 
-    <?php foreach ($tasks as $task): ?>
+    <?php if (count($tasks) === 0): ?>
+
         <tr>
-            <td><?= $task['id'] ?></td>
-            <td><?= $task->dim1->date ?></td>
-            <td><?= $task->dim1->deadline ?></td>
-            <td><?= $task->dim2->subject ?></td>
-            <td><?= $task->dim2->type ?></td>
-            <td><?= $task->dim3->info ?></td>
-            <td><?= $task->dim3->comment ?></td>
+            <td colspan="7" style="text-align:center; color:red;">
+                Tulemust ei leitud
+            </td>
         </tr>
-    <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <?php foreach ($tasks as $task): ?>
+            <tr>
+                <td><?= $task['id'] ?></td>
+                <td><?= $task->dim1->date ?></td>
+                <td><?= $task->dim1->deadline ?></td>
+                <td><?= $task->dim2->subject ?></td>
+                <td><?= $task->dim2->type ?></td>
+                <td><?= $task->dim3->info ?></td>
+                <td><?= $task->dim3->comment ?></td>
+            </tr>
+        <?php endforeach; ?>
+
+    <?php endif; ?>
 </table>
 
-<!-- СЮДА ВСТАВЛЯТЬ JS -->
+<!-- Очищаем все input после загрузки -->
 <script>
     window.onload = function () {
         document.querySelectorAll("input").forEach(input => input.value = "");
+
+        // Очищаем URL (убирает ?subject=...)
+        if (window.location.search.length > 0) {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
     };
 </script>
 
